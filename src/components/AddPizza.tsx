@@ -1,4 +1,4 @@
-import React, {FC, ChangeEvent, FormEvent, useState} from 'react';
+import React, { FC, ChangeEvent, FormEvent, useState } from 'react';
 import './styles.css';
 import Pizza from '../models/Pizza'
 
@@ -12,62 +12,66 @@ const initState = {
     img: '',
 }
 
-const AddPizzaForm: FC<AddPizzaFormProps> = ({addPizza}) => {
-    
-const [newPizza, setNewPizza] = useState<{title: string, price: string,img: string }>(initState);
+const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 
-const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-    console.log('handle change >>', e.target);
-    const {name, value} = e.target;
-    // console.log('value >>>', value);
-    // console.log('name >>>', name);
+    const [newPizza, setNewPizza] = useState<{ title: string, price: string, img: string }>(initState);
 
-    setNewPizza({
-        ...newPizza,
-        [name]: value
-    });
-}
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        // console.log('handle change >>', e.target);
+        const { name, value } = e.target;
+        // console.log('value >>>', value);
+        // console.log('name >>>', name);
 
-const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
-    console.log('handle change >>', e.target)
-    e.preventDefault()
-
-    const {title, price, img} = newPizza;
-    if (title&&price && img) {
-        addPizza({
-            title,
-            img,
-            price: Number(price),
-            id: Date.now()
-        })
+        setNewPizza({
+            ...newPizza,
+            [name]: value
+        });
     }
-}
-return (
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        // console.log('handle change >>', e.target)
+        e.preventDefault()
+
+        const { title, price, img } = newPizza;
+        if (title && price && img) {
+            addPizza({
+                title,
+                img,
+                price: Number(price),
+                id: Date.now()
+            })
+            setNewPizza(initState)
+        }
+    }
+
+    console.log('new pizza >>', newPizza)
+
+    return (
         <form onSubmit={handleSubmit}>
-            <input 
-            name='title'
-            type='text'
-            placeholder='Название'  
-            onChange={handleChange}
-            value={newPizza.title}
-             />
-            <input 
-            name='price'
-            type='text'
-            placeholder='Стоимость'
-            onChange={handleChange}
-            value={newPizza.price}
-             />
-            <input 
-            name='img'
-            type='text'
-            placeholder='Изображение'
-            onChange={handleChange}
-            value={newPizza.img}
-             />
-             <button type='submit'>
+            <input
+                name='title'
+                type='text'
+                placeholder='Название'
+                onChange={handleChange}
+                value={newPizza.title}
+            />
+            <input
+                name='price'
+                type='text'
+                placeholder='Стоимость'
+                onChange={handleChange}
+                value={newPizza.price}
+            />
+            <input
+                name='img'
+                type='text'
+                placeholder='Изображение'
+                onChange={handleChange}
+                value={newPizza.img}
+            />
+            <button type='submit'>
                 + Добавитьв меню
-             </button>
+            </button>
         </form>
     )
 }
