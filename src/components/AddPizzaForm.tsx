@@ -17,11 +17,7 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     const [newPizza, setNewPizza] = useState<{ title: string, price: string, img: string }>(initState);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        // console.log('handle change >>', e.target);
         const { name, value } = e.target;
-        // console.log('value >>>', value);
-        // console.log('name >>>', name);
-
         setNewPizza({
             ...newPizza,
             [name]: value
@@ -29,7 +25,7 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        // console.log('handle change >>', e.target)
+
         e.preventDefault()
 
         const { title, price, img } = newPizza;
