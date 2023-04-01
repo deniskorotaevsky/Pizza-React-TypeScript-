@@ -31,7 +31,6 @@ const SinglePizza: FC<SinglePizzaProps> = ({ pizza, updatePizza, deletePizza }) 
                 <AiFillDelete onClick={handleDelete} />
             </div>
 
-
             {edit
                 ? <EditPizzaForm
                     data={pizza}

@@ -61,7 +61,7 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
             <input
                 name='img'
                 type='text'
-                placeholder='Изображение'
+                placeholder='pizza-1.jpg'
                 onChange={handleChange}
                 value={newPizza.img}
             />
